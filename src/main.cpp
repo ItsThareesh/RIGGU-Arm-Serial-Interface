@@ -12,22 +12,21 @@ int main()
 
     UARTProtocol protocol(config);
 
-    protocol.begin();
-
-    int command;
-    int degree;
-
-    while (1)
+    if (protocol.begin())
     {
-        cout << "Enter Command: ";
-        cin >> command;
+        int command = 0;
+        int degree = 0;
 
-        cout << "Enter Int Data: ";
-        cin >> degree;
+        while (1)
+        {
+            cout << "Enter Command: ";
+            cin >> command;
 
-        fflush(stdin);
+            cout << "Enter Int Data: ";
+            cin >> degree;
 
-        protocol.sendCommand(uint8_t(command));
-        protocol.sendData((uint8_t *)(&degree), 1);
+            protocol.sendCommand(uint8_t(command));
+            protocol.sendData((uint8_t *)(&degree), 1);
+        }
     }
 }

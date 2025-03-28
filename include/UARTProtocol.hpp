@@ -30,11 +30,22 @@ private:
 public:
     UARTProtocol(const ProtocolConfig &config);
     ~UARTProtocol();
+    /**
+     * @brief Initializes the UART protocol with the specified configuration.
+     * @return Returns true if the initialization is successful, false otherwise.
+     */
     bool begin();
+    /**
+     * @brief Sends a command over UART.
+     * @param command The command byte to be transmitted.
+     */
     void sendCommand(uint8_t command);
+    /**
+     * @brief Sends a command over UART.
+     * @param command The data byte to be transmitted.
+     * @param length The length of the data to be trasmitted.
+     */
     void sendData(const uint8_t *data, size_t length);
-    bool readCommand(uint8_t &command, int timeout = 1000);
-    bool readData(uint8_t *data, size_t length, int timeout = 1000);
 };
 
 #endif // UARTPROTOCOL_Hz

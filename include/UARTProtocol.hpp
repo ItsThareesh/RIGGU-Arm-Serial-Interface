@@ -12,7 +12,7 @@
 
 struct ProtocolConfig
 {
-    std::string portName = "/dev/cu.usbserial-1140"; // Change as needed
+    std::string portName = "/dev/ttyUSB0"; // Change as needed
     speed_t baudRate = B115200;
     tcflag_t byteSize = CS8;
     uint8_t stopBits = 1;

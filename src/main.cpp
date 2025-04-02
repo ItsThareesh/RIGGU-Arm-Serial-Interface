@@ -15,18 +15,29 @@ int main()
     if (protocol.begin())
     {
         int command = 0;
-        int degree = 0;
+        int degrees[3];
 
         while (1)
         {
             cout << "Enter Command: ";
             cin >> command;
 
-            cout << "Enter Int Data: ";
-            cin >> degree;
+            cout << "Enter First Angle: ";
+            cin >> degrees[0];
+
+            cout << "Enter Second Angle: ";
+            cin >> degrees[1];
+
+            cout << "Enter Third Angle: ";
+            cin >> degrees[2];
 
             protocol.sendCommand(uint8_t(command));
-            protocol.sendData((uint8_t *)(&degree), 1);
+
+            uint8_t degrees_bytes[3] = {static_cast<uint8_t>(degrees[0]),
+                                        static_cast<uint8_t>(degrees[1]),
+                                        static_cast<uint8_t>(degrees[2])};
+
+            protocol.sendData(degrees_bytes, 3);
         }
     }
 }
